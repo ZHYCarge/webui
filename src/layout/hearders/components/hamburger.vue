@@ -21,6 +21,7 @@ const icon = computed(()=>{
 
 <style scoped>
 .hamburger-container{
+  width: 40px;
   margin-right: 16px;
   box-sizing: border-box;
   cursor: pointer;

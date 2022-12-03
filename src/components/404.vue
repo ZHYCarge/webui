@@ -2,9 +2,10 @@
 
   <el-result title="404" sub-title="很抱歉，这个界面还在开发过程中。。。">
     <template #icon>
-      <el-image
-          :src="url"
-      />
+      <el-image style="width: 400px; height: 400px" :preview-src-list="[url]" :src="url" fit="scale-down" />
+<!--      <el-image-->
+<!--          :src="url"-->
+<!--      />-->
     </template>
     <template #extra>
       <el-button type="primary" @click="gobackhome">回到主页</el-button>

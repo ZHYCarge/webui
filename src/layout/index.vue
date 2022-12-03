@@ -1,17 +1,27 @@
 <template>
-    <el-container class="app-wrapper">>
-      <el-aside :width="sideWidth"  class="sidebar-container" >
-<!--      <el-aside width="95px"  class="sidebar-container" >-->
-        <Menu/>
-      </el-aside>
-      <el-container class="container" :class="{hidderContainer:$store.getters.siderType}">
-        <el-header ><Header/></el-header>
-        <el-main>
-          <router-view/>
-        </el-main>
+  <div class="common-layout">
+    <el-container>
+      <el-aside :width="sideWidth" style="transition:width 0.5s; overflow-x:hidden"><Menu/></el-aside>
+      <el-container>
+        <el-header  ><Header/></el-header>
+        <el-main><router-view/> </el-main>
       </el-container>
     </el-container>
+  </div>
 </template>
+<!--<template>-->
+<!--    <el-container class="app-wrapper">>-->
+<!--      <el-aside :width="sideWidth"  class="sidebar-container" >-->
+<!--        <Menu/>-->
+<!--      </el-aside>-->
+<!--      <el-container class="container" :class="{hidderContainer:$store.getters.siderType}">-->
+<!--        <el-header ><Header/></el-header>-->
+<!--        <el-main>-->
+<!--          <router-view/>-->
+<!--        </el-main>-->
+<!--      </el-container>-->
+<!--    </el-container>-->
+<!--</template>-->
 <script setup>
 import Menu from './menu'
 import Header from './hearders'
@@ -25,33 +35,16 @@ router.replace('/main')
 }
 // const sideWidth = ref(variables.sideBarWidth)
 const store = useStore()
+
+// const width =  store.getters.siderType ? '200px' : '37px'
 const sideWidth = computed(()=>{
   // return store.getters.siderType ? variables.sideBarWidth : variables.hideSideBarWidth
-  return store.getters.siderType ? '270px' : '95px'
+  return store.getters.siderType ? '200px' : '70px'
+
 
 })
 </script>
 
 <style lang="scss" scoped>
-.app-container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-.container {
-  width: calc(100% - 5%);
-  height: 100%;
 
-  position: fixed;
-  top: 0;
-  right: 0;
-  z-index: 9;
-  transition: all 0.28s;
-  &.hidderContainer {
-    width: calc(100% - 17%);
-  }
-}
-::v-deep .el-header {
-  padding: 0;
-}
 </style>

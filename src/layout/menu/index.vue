@@ -1,7 +1,7 @@
 <template>
-  <div  style="text-align: center;background-color:#fff;font-size: 20px;color: black;">
-    后台系统
-  </div>
+<!--  <div  style="text-align: center;background-color:#fff;font-size: 20px;color: black;">-->
+<!--    后台系统-->
+<!--  </div>-->
     <el-menu
         :default-active="defaultActive"
         active-color="#ffffff"

@@ -1,10 +1,27 @@
+<!--<template>-->
+<!--  <div class="navbar">-->
+<!--    <el-col :span="1">-->
+<!--      <Hamburger/>-->
+<!--    </el-col>-->
+<!--    <el-col :span="2">-->
+<!--      <Breadcrumb/>-->
+<!--    </el-col>-->
+<!--    <el-col :span="21">-->
+<!--    <Avatar />-->
+<!--    </el-col>-->
+
+<!--  </div>-->
+<!--</template>-->
+
 <template>
-  <div class="navbar">
-<Hamburger/>
-    <Breadcrumb/>
-      <Avatar class="navbar-right"/>
+  <div style="box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08)" >
+      <Hamburger class="div-css"/>
+      <Breadcrumb class="div-css" style=" margin-top:21px" />
+      <Avatar class="div-css" />
+
   </div>
 </template>
+
 
 <script setup>
 import Breadcrumb from "@/layout/hearders/components/breadcrumb";
@@ -14,31 +31,10 @@ import Hamburger from "@/layout/hearders/components/hamburger";
 
 </script>
 
-<style lang="scss" scoped>
-.navbar {
-  width: 1700px;
-  height: 60px;
-  overflow: hidden;
-  background-color: #fff;
-  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
-  padding: 0 16px;
-  display:flex;
-  align-items: center;
-  box-sizing: border-box;
-  position: relative;
-  .navbar-right {
-    flex: -1;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    //::v-deep .navbar-item {
-    //  display: inline-block;
-    //  margin-left: 18px;
-    //  font-size: 22px;
-    //  color: #5a5e66;
-    //  box-sizing: border-box;
-    //  cursor: pointer;
-    //}
-  }
+<style scoped>
+.div-css{
+  float: left;
+  margin-top:10px;
+  margin-right:15px;
 }
 </style>
