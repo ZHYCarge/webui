@@ -1,24 +1,4 @@
 # webui
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+尝试编写毕设的VUE项目框架
+示例网站：[webui](http://demo.zhycarge.top)
