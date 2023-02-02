@@ -1,4 +1,4 @@
-import { login as loginApi,auth as authApi } from '@/api/login'
+import {login as loginApi, auth as authApi} from '@/api/login'
 import router from '@/router'
 import { setTokenTime } from '@/utils/auth'
 import { ElMessage } from 'element-plus'
@@ -35,7 +35,11 @@ export default {
             return new Promise((resolve, reject) => {
                 loginApi(userInfo)
                     .then(res => {
-
+                        if (res === null)
+                        {
+                            ElMessage.error("用户名或密码错误！")
+                            resolve(-1)
+                        }
                         commit('setToken', res.token)
                         commit('setUsername', res.username)
                         commit('setImageURL', res.img)
@@ -45,6 +49,7 @@ export default {
                     })
                     .catch((err) => {
                         reject(err)
+
                     })
             })
         },

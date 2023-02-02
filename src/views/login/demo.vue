@@ -16,8 +16,8 @@
       <el-form-item  prop="code">
         <label>验证码</label>
         <el-row :gutter="10">
-          <el-col :span="16"><el-input v-model.number="form.code"></el-input></el-col>
-          <el-col :span="8"><el-button type="info" class="submet-block">获取验证码</el-button></el-col>
+          <el-col :span="12"><el-input v-model.number="form.valid_code"></el-input></el-col>
+          <el-col :span="12"><el-image :src="code_url" @click="getauthcode"/></el-col>
         </el-row>
 
       </el-form-item>
@@ -30,11 +30,14 @@
 <script setup>
 import { ref } from 'vue'
 import { useStore } from 'vuex'
+import {auth_code, VerifyCode} from "@/api/login";
+import {ElMessage} from "element-plus";
 const store = useStore()
 const form = ref({
   username: '',
   password: '',
-  code:'现阶段不需要输入验证码'
+  valid_code:'',
+  uuid:''
 })
 
 const rules = ref({
@@ -52,7 +55,7 @@ const rules = ref({
       trigger: 'blur'
     }
   ],
-  code: [
+  valid_code: [
     {
       required: true,
       message: '请输入验证码',
@@ -61,17 +64,37 @@ const rules = ref({
   ]
 })
 
+
+
+
 const formRef = ref(null)
 const handleLogin = () => {
   formRef.value.validate(async (valid) => {
     if (valid) {
-      await store.dispatch('app/login', form.value)
+      const res = await VerifyCode(form.value)
+      if (res.msg !== '验证码输入正确！')
+      {
+        getauthcode()
+        ElMessage.error(res.msg)
+      return false
+      }
+      if (await store.dispatch('app/login', form.value) === -1)
+        getauthcode()
     } else {
       console.log('error submit!!')
       return false
     }
   })
 }
+const Auth_code = ref()
+const code_url = ref()
+const getauthcode=async()=>{
+  Auth_code.value = await auth_code()
+  // console.log(Auth_code.value.img)
+  code_url.value = Auth_code.value.img
+  form.value.uuid = Auth_code.value.uuid
+}
+getauthcode()
 
 </script>
 

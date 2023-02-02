@@ -28,7 +28,7 @@
 <script  setup>
 import {menuList} from '/src/api/menu'
 import {ref} from 'vue'
-const menusList =ref()
+const menusList = ref()
 const defaultActive = ref(sessionStorage.getItem('path')||'/main')
 const  initMenuList=async()=>{
   menusList.value = await menuList()
